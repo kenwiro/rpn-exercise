@@ -27,6 +27,10 @@ app.post('/api/v1/evaluate', (req: Request, res: Response): any => {
     }
   }
 
+  if (stack.length !== 1) {
+    return res.status(400).json({ error: "invalid expression" });
+  }
+
   return res.status(200).json({ result: stack[0] });
 });
 
